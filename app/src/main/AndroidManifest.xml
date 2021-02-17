@@ -10,9 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Simple_memo">
-        <activity android:name=".presentation.screen.detail.DetailActivity"></activity>
+        <activity android:name=".presentation.screen.edit.EditActivity"></activity>
+        <activity android:name=".presentation.screen.detail.DetailActivity" />
         <activity
-            android:name=".presentation.screen.edit.EditActivity"
+            android:name=".presentation.screen.reorder.ReorderActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.screen.create.CreateActivity"

@@ -3,7 +3,6 @@ package com.yologger.simple_memo.presentation.screen.edit
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.yologger.simple_memo.R
-import kotlinx.android.synthetic.main.activity_edit.*
 
 class EditActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

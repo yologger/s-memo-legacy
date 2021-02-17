@@ -1,13 +1,12 @@
 package com.yologger.simple_memo.presentation.screen
 
 import android.content.Intent
-import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.yologger.simple_memo.R
 import com.yologger.simple_memo.presentation.screen.create.CreateActivity
 import com.yologger.simple_memo.presentation.screen.detail.DetailActivity
-import com.yologger.simple_memo.presentation.screen.edit.EditActivity
+import com.yologger.simple_memo.presentation.screen.reorder.ReorderActivity
 
 class AppRouter
 constructor(
@@ -22,7 +21,7 @@ constructor(
     }
 
     fun openEdit() {
-        val nextIntent = Intent(appActivity, EditActivity::class.java)
+        val nextIntent = Intent(appActivity, ReorderActivity::class.java)
         appActivity.startActivity(nextIntent)
     }
 
