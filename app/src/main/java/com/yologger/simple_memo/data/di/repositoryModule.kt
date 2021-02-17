@@ -5,5 +5,5 @@ import com.yologger.simple_memo.presentation.repository.MemoRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    single<MemoRepository> { MemoRepositoryImpl() }
+    single<MemoRepository> { MemoRepositoryImpl(get(), get()) }
 }

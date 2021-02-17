@@ -6,17 +6,17 @@
     <data>
         <variable
             name="viewModel"
-            type="com.yologger.simple_memo.presentation.screen.create.CreateViewModel" />
+            type="com.yologger.simple_memo.presentation.screen.detail.DetailViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".presentation.screen.create.CreateActivity">
+        tools:context=".presentation.screen.detail.DetailActivity">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/activity_create_toolbar"
+            android:id="@+id/activity_detail_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
@@ -29,31 +29,32 @@
             android:layout_weight="1">
 
             <EditText
-                android:id="@+id/activity_create_tv_title"
+                android:id="@+id/activity_detail_et_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/activity_create_tv_title"
-                android:inputType="text"
-                android:maxLines="1"
-                android:text="@={viewModel.liveDataTitle}"
-                android:padding="@dimen/padding_md"
-                app:layout_constraintBottom_toTopOf="@+id/activity_create_tv_content"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:clickable="false"
+                android:focusable="false"
+                android:cursorVisible="false"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/activity_detail_et_content"
+                android:text="@={viewModel.title}" />
 
             <EditText
-                android:id="@+id/activity_create_tv_content"
+                android:id="@+id/activity_detail_et_content"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="top"
-                android:hint="@string/activity_create_tv_content"
-                android:padding="@dimen/padding_md"
-                android:text="@={viewModel.liveDataContent}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:clickable="false"
+                android:focusable="false"
+                android:cursorVisible="false"
+                app:layout_constraintTop_toBottomOf="@+id/activity_detail_et_title"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_create_tv_title" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:gravity="top"
+                android:text="@={viewModel.content}" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

@@ -1,6 +1,5 @@
 package com.yologger.simple_memo.presentation.screen.create
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
@@ -27,9 +26,9 @@ class CreateActivity : BaseActivity() {
     private fun setupBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create)
         binding.viewModel = viewModel
-
         viewModel.routingEvent.observe(this, Observer {
             when (it) {
+                CreateVMRoutingEvent.CREATE_SUCCESS -> { finish() }
                 CreateVMRoutingEvent.CLOSE -> { finish() }
             }
         })
@@ -43,8 +42,7 @@ class CreateActivity : BaseActivity() {
         toolbar.setOnMenuItemClickListener {
             when (it?.itemId) {
                 R.id.menu_activity_create_toolbar_done -> { viewModel.createMemo() }
-                // R.id.menu_activity_create_toolbar_done -> { finish() }
-                else -> { }
+                else -> { finish() }
             }
             true
         }

@@ -6,4 +6,6 @@
     <!-- activity_create.xml -->
     <string name="activity_create_tv_title">Title</string>
     <string name="activity_create_tv_content">Content</string>
+    <string name="activity_detail_tv_title">Title</string>
+    <string name="activity_detail_tv_content">Content</string>
 </resources>

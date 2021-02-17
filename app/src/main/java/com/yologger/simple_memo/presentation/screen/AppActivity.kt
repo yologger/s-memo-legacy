@@ -1,6 +1,8 @@
 package com.yologger.simple_memo.presentation.screen
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -19,8 +21,26 @@ class AppActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_app)
+//        setup()
+//        setupBottomNavigationView()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("TEST", "AppActivity: onStart()")
         setup()
         setupBottomNavigationView()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("TEST", "AppActivity: onStop()")
+        currentNavController = null
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Log.d("TEST", "AppActivity: onActivityResult()")
     }
 
     private fun setup() {

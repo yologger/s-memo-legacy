@@ -3,6 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'project-report'
+apply plugin: 'realm-android'
+
+configurations.all {
+    resolutionStrategy.force "org.antlr:antlr4-runtime:4.7.1"
+    resolutionStrategy.force "org.antlr:antlr4-tool:4.7.1"
+}
 
 android {
     compileSdkVersion 30
@@ -61,9 +67,15 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
-    // Android Architecture Component
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    // Android Architecture Component - ViewModel
     implementation "androidx.activity:activity-ktx:1.1.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+
+    // Android Architecture Component - Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     // Koin
     implementation "org.koin:koin-core:$koin_version"
