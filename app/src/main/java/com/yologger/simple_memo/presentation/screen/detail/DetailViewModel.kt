@@ -35,14 +35,24 @@ constructor(
     }
 
     fun showToast() {
-        routingEvent.setValue(DetailVMRoutingEvent.SHOW_TOAST)
+        routingEvent.value = DetailVMRoutingEvent.SHOW_TOAST
     }
 
     fun openEdit() {
-        routingEvent.setValue(DetailVMRoutingEvent.OPEN_EDIT)
+        routingEvent.value = DetailVMRoutingEvent.OPEN_EDIT
     }
 
     fun showDeleteDialog() {
-        routingEvent.setValue(DetailVMRoutingEvent.SHOW_DELETE_DIALOG)
+        routingEvent.value = DetailVMRoutingEvent.SHOW_DELETE_DIALOG
+    }
+
+    fun deletePost(memoId: Int) {
+        memoRepository.deleteMemoById(memoId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onComplete = { routingEvent.value = DetailVMRoutingEvent.DELETE_AND_CLOSE },
+                onError = { routingEvent.value = DetailVMRoutingEvent.UNKNOWN_ERROR })
+            .apply { disposables.add(this) }
     }
 }

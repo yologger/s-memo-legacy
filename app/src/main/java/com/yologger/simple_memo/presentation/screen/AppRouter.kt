@@ -17,7 +17,7 @@ constructor(
     fun openCreate() {
         // navController.navigate(R.id.action_homeFragment_to_createFragment)
         val nextIntent = Intent(appActivity, CreateActivity::class.java)
-        appActivity.startActivityForResult(nextIntent, 3)
+        appActivity.startActivity(nextIntent)
     }
 
     fun openEdit() {

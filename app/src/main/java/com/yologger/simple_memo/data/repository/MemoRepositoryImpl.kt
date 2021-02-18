@@ -29,4 +29,18 @@ constructor(
     override fun fetchMemo(userId: Int): Single<Memo> {
         return memoDao.getMemoById(userId).map { memoEntityToMemoMapper.map(memoEntity = it) }
     }
+
+    override fun updateMemo(memo: Memo): Completable {
+        val memoEntity = MemoEntity(id = memo.id!!, title = memo.title, content = memo.content)
+        return memoDao.update(memoEntity)
+    }
+
+    override fun deleteMemo(memo: Memo): Completable {
+        val memoEntity = MemoEntity(id = memo.id!!, title = memo.title, content = memo.content)
+        return memoDao.delete(memoEntity)
+    }
+
+    override fun deleteMemoById(memoId: Int): Completable {
+        return memoDao.deleteById(memoId)
+    }
 }

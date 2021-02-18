@@ -1,9 +1,6 @@
 package com.yologger.simple_memo.infrastructure.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.yologger.simple_memo.infrastructure.entity.MemoEntity
 import io.reactivex.Completable
 import io.reactivex.Flowable
@@ -20,4 +17,14 @@ interface MemoDao {
 
     @Query("SELECT * FROM MemoEntity WHERE id = :userId")
     fun getMemoById(userId: Int): Single<MemoEntity>
+
+    @Update
+    fun update(memoEntity: MemoEntity): Completable
+
+    @Delete
+    fun delete(memoEntity: MemoEntity): Completable
+
+    @Query("DELETE FROM MemoEntity WHERE id = :memoId")
+    fun deleteById(memoId: Int): Completable
+
 }

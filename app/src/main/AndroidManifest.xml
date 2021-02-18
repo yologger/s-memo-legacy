@@ -10,8 +10,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Simple_memo">
-        <activity android:name=".presentation.screen.edit.EditActivity"></activity>
-        <activity android:name=".presentation.screen.detail.DetailActivity" />
+        <activity
+            android:name=".presentation.screen.edit.EditActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.screen.detail.DetailActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.screen.reorder.ReorderActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -23,7 +27,6 @@
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

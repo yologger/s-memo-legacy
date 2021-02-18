@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.GestureDetector
+import android.view.Gravity
 import android.view.MotionEvent
 import android.widget.EditText
 import android.widget.TextView
@@ -39,12 +40,16 @@ class DetailActivity : AppCompatActivity() {
         setupGesture()
     }
 
+    override fun onStart() {
+        super.onStart()
+        val memoId = intent.getIntExtra("memoId", 0)
+        viewModel.fetchMemo(memoId)
+    }
+
     private fun setup() {
         coordinatorLayout = findViewById(R.id.activity_detail_cl)
         editTextTitle = findViewById(R.id.activity_detail_et_title)
         editTextContent = findViewById(R.id.activity_detail_et_content)
-        val memoId = intent.getIntExtra("memoId", 0)
-        viewModel.fetchMemo(memoId)
     }
 
     private fun setupBinding() {
@@ -54,6 +59,8 @@ class DetailActivity : AppCompatActivity() {
             when(it) {
                 DetailVMRoutingEvent.OPEN_EDIT -> {
                     val nextIntent = Intent(this, EditActivity::class.java)
+                    val memoId = intent.getIntExtra("memoId", 0)
+                    nextIntent.putExtra("memoId", memoId)
                     startActivity(nextIntent)
                 }
                 DetailVMRoutingEvent.SHOW_TOAST -> {
@@ -62,17 +69,21 @@ class DetailActivity : AppCompatActivity() {
                 DetailVMRoutingEvent.SHOW_DELETE_DIALOG -> {
                     val builder = AlertDialog.Builder(coordinatorLayout.context)
                     builder.setMessage("Want to delete this post?")
-                    builder.setPositiveButton("OK") { dialog, id ->
-                        finish()
+                    builder.setPositiveButton("OK") { _, _ ->
+                        val memoId = intent.getIntExtra("memoId", 0)
+                        viewModel.deletePost(memoId)
                     }
-                    builder.setNegativeButton("CANCEL") { dialog, id ->
+                    builder.setNegativeButton("CANCEL") { _, _ ->
 
                     }
                     builder.show()
                 }
                 DetailVMRoutingEvent.DELETE_AND_CLOSE -> {
-                    Snackbar.make(coordinatorLayout, "Successfully Deleted", Snackbar.LENGTH_LONG).show()
+                    Toast.makeText(this, "DELETED SUCCESSFULLY", Toast.LENGTH_SHORT).show()
                     finish()
+                }
+                DetailVMRoutingEvent.UNKNOWN_ERROR -> {
+
                 }
             }
         })

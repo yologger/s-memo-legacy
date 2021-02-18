@@ -4,5 +4,6 @@ enum class DetailVMRoutingEvent {
     OPEN_EDIT,
     SHOW_TOAST,
     SHOW_DELETE_DIALOG,
-    DELETE_AND_CLOSE
+    DELETE_AND_CLOSE,
+    UNKNOWN_ERROR
 }

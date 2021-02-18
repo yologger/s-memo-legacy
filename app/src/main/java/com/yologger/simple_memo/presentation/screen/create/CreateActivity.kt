@@ -1,6 +1,7 @@
 package com.yologger.simple_memo.presentation.screen.create
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -26,9 +27,13 @@ class CreateActivity : BaseActivity() {
     private fun setupBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create)
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         viewModel.routingEvent.observe(this, Observer {
             when (it) {
-                CreateVMRoutingEvent.CREATE_SUCCESS -> { finish() }
+                CreateVMRoutingEvent.CREATE_SUCCESS -> {
+                    Toast.makeText(this, "CREATED SUCCESSFULLY", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
                 CreateVMRoutingEvent.CLOSE -> { finish() }
             }
         })
