@@ -137,7 +137,7 @@ class HomeFragment : BaseFragment() {
 
         inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-            private var textViewTitle: TextView = itemView.findViewById(R.id.item_fragment_home_memo_tv_title)
+            private val textViewTitle: TextView = itemView.findViewById(R.id.item_fragment_home_memo_tv_title)
 
             fun bind(memo: Memo) {
                 textViewTitle.text = memo.title
