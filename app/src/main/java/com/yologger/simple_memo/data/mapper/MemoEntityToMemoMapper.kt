@@ -6,9 +6,11 @@ import com.yologger.simple_memo.presentation.model.Memo
 class MemoEntityToMemoMapper {
     fun map(memoEntity: MemoEntity): Memo {
         return Memo(
-            id = memoEntity.id,
-            title = memoEntity.title,
-            content = memoEntity.content
+                id = memoEntity.id,
+                title = memoEntity.title,
+                content = memoEntity.content,
+                position = memoEntity.position
         )
     }
 }
+s

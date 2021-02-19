@@ -20,19 +20,31 @@ constructor(
     val liveDataTitle = MutableLiveData("")
     val liveDataContent = MutableLiveData("")
 
+    private var columnMaxSize = 0
+
     fun createMemo() {
         val title = liveDataTitle.value?.trimEnd()!!
         val content = liveDataContent.value?.trimEnd()!!
         if (title == "" && content == "") {
             return
         } else {
-            memoRepository.createMemo(title, content)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(
-                    onComplete = { routingEvent.setValue(CreateVMRoutingEvent.CREATE_SUCCESS) },
-                    onError = { routingEvent.setValue(CreateVMRoutingEvent.CLOSE) })
-                .apply { disposables.add(this) }
+            memoRepository.createMemo(title = title, content = content, position = columnMaxSize)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeBy(
+                            onComplete = { routingEvent.setValue(CreateVMRoutingEvent.CREATE_SUCCESS) },
+                            onError = { routingEvent.setValue(CreateVMRoutingEvent.CLOSE) })
+                    .apply { disposables.add(this) }
         }
+    }
+
+    fun getSize() {
+        memoRepository.getSize()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onSuccess = { columnMaxSize = it },
+                onError = {}
+            )
     }
 }

@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.yologger.simple_memo.infrastructure.entity.MemoEntity
 
-@Database(entities = [MemoEntity::class], version = 1)
+@Database(entities = [MemoEntity::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun memoDao(): MemoDao

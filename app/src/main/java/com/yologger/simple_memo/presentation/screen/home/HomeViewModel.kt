@@ -31,8 +31,15 @@ constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
-                onNext = { _memos.setValue(it) },
-                onError = {  },
+                onNext = {
+                    Log.d("TEST", "HomeViewModel: fetchAllMemos()")
+                    Log.d("TEST", it.toString())
+                    _memos.setValue(it)
+                },
+                onError = {
+                    Log.d("TEST", "ERROR")
+                    Log.d("TEST", it.localizedMessage)
+                },
                 onComplete = {  }
             ).apply { disposables.add(this) }
     }

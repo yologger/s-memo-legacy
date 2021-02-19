@@ -22,6 +22,7 @@ class CreateActivity : BaseActivity() {
         setContentView(R.layout.activity_create)
         setupBinding()
         setupToolbar()
+        viewModel.getSize()
     }
 
     private fun setupBinding() {

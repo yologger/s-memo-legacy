@@ -17,8 +17,8 @@ constructor(
         private val memoEntityToMemoMapper: MemoEntityToMemoMapper
 ) : MemoRepository {
 
-    override fun createMemo(title: String, content: String): Completable {
-        val memoEntity = MemoEntity(title = title, content = content)
+    override fun createMemo(title: String, content: String, position: Int): Completable {
+        val memoEntity = MemoEntity(title = title, content = content, position = position)
         return memoDao.insert(memoEntity)
     }
 
@@ -31,16 +31,20 @@ constructor(
     }
 
     override fun updateMemo(memo: Memo): Completable {
-        val memoEntity = MemoEntity(id = memo.id!!, title = memo.title, content = memo.content)
+        val memoEntity = MemoEntity(id = memo.id!!, title = memo.title, content = memo.content, position = memo.position)
         return memoDao.update(memoEntity)
     }
 
     override fun deleteMemo(memo: Memo): Completable {
-        val memoEntity = MemoEntity(id = memo.id!!, title = memo.title, content = memo.content)
+        val memoEntity = MemoEntity(id = memo.id!!, title = memo.title, content = memo.content, position = memo.position)
         return memoDao.delete(memoEntity)
     }
 
     override fun deleteMemoById(memoId: Int): Completable {
         return memoDao.deleteById(memoId)
+    }
+
+    override fun getSize(): Single<Int> {
+        return memoDao.getSize()
     }
 }

@@ -27,4 +27,6 @@ interface MemoDao {
     @Query("DELETE FROM MemoEntity WHERE id = :memoId")
     fun deleteById(memoId: Int): Completable
 
+    @Query("SELECT COUNT(*) FROM MemoEntity")
+    fun getSize() : Single<Int>
 }
