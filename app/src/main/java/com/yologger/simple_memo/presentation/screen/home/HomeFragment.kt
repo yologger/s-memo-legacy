@@ -1,5 +1,6 @@
 package com.yologger.simple_memo.presentation.screen.home
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -65,7 +67,8 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun setupBinding() {
-        viewModel.memos.observe(viewLifecycleOwner, Observer { memos ->
+        viewModel.memosLiveData.observe(viewLifecycleOwner, Observer { memos ->
+            Log.d("TEST", "UPDATED!!!!!!")
             recyclerViewAdapter.update(memos)
         })
 
@@ -78,9 +81,16 @@ class HomeFragment : BaseFragment() {
 
                 }
                 HomeVMRoutingEvent.OPEN_DETAIL -> {
-                    router.openDetail(1)
+
                 }
                 HomeVMRoutingEvent.SHOW_ERROR -> {
+
+                }
+                HomeVMRoutingEvent.DELETE_SUCCESS -> {
+                    Toast.makeText(activity, "DELETED SUCCESSFULLY", Toast.LENGTH_SHORT).show()
+
+                }
+                HomeVMRoutingEvent.UNKNOWN_ERROR -> {
 
                 }
             }
@@ -119,7 +129,7 @@ class HomeFragment : BaseFragment() {
 
     inner class RecyclerViewAdapter
     constructor(
-        private var memos: List<Memo> = listOf()
+        private var memos: MutableList<Memo> = mutableListOf()
     ) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -131,7 +141,8 @@ class HomeFragment : BaseFragment() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) = (holder as ViewHolder).bind(memos[position])
 
         fun update(memos: List<Memo>) {
-            this.memos = memos
+            this.memos = memos.toMutableList()
+            Log.d("TEST", "THIS!!: ${this.memos.toString()}")
             notifyDataSetChanged()
         }
 
@@ -145,8 +156,23 @@ class HomeFragment : BaseFragment() {
                     val position = adapterPosition
                     if (position != RecyclerView.NO_POSITION) {
                         val memoId = memos[position].id
-                        if (memoId != null) { router.openDetail(memoId) }
+                        val memoPosition = memos[position].position
+                        if (memoId != null) { router.openDetail(memoId, memoPosition) }
                     }
+                }
+
+                itemView.setOnLongClickListener {
+                    val builder = AlertDialog.Builder(activity)
+                    builder.setMessage("Want to delete this post?")
+                    builder.setPositiveButton("OK") { _, _ ->
+                        val position = adapterPosition
+                        viewModel.deleteMemo(position)
+                    }
+                    builder.setNegativeButton("CANCEL") { _, _ ->
+                        Log.d("TEST", "CANCEL")
+                    }
+                    builder.show()
+                    true
                 }
             }
         }

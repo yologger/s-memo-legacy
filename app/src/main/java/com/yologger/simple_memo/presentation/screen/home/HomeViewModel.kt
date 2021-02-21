@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.yologger.simple_memo.presentation.base.BaseViewModel
 import com.yologger.simple_memo.presentation.model.Memo
 import com.yologger.simple_memo.presentation.repository.MemoRepository
+import com.yologger.simple_memo.presentation.screen.detail.DetailVMRoutingEvent
 import com.yologger.simple_memo.presentation.util.SingleLiveEvent
 import com.yologger.simple_memo.presentation.util.transformer.AsyncTransformer
 import com.yologger.simple_memo.presentation.util.transformer.FlowableAsyncTransformer
@@ -22,8 +23,9 @@ constructor(
 
     val routingEvent: SingleLiveEvent<HomeVMRoutingEvent> = SingleLiveEvent()
 
-    private val _memos: MutableLiveData<List<Memo>> = MutableLiveData(listOf())
-    val memos: LiveData<List<Memo>> = _memos
+    private var _memos = mutableListOf<Memo>()
+    private val _memosLiveData: MutableLiveData<List<Memo>> = MutableLiveData(listOf())
+    val memosLiveData: LiveData<List<Memo>> = _memosLiveData
 
     fun fetchAllMemos() {
         memoRepository.fetchAllMemos()
@@ -34,7 +36,8 @@ constructor(
                 onNext = {
                     Log.d("TEST", "HomeViewModel: fetchAllMemos()")
                     Log.d("TEST", it.toString())
-                    _memos.setValue(it)
+                    _memos = it.toMutableList()
+                    _memosLiveData.setValue(_memos)
                 },
                 onError = {
                     Log.d("TEST", "ERROR")
@@ -42,5 +45,22 @@ constructor(
                 },
                 onComplete = {  }
             ).apply { disposables.add(this) }
+    }
+
+    fun deleteMemo(position: Int) {
+        val memoId = _memos[position].id
+        if (memoId != null) {
+            memoRepository.deleteMemoById(memoId)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeBy(
+                            onComplete = {
+                                _memos.removeAt(position)
+                                _memosLiveData.value = _memos
+                                routingEvent.value = HomeVMRoutingEvent.DELETE_SUCCESS
+                            },
+                            onError = { routingEvent.value = HomeVMRoutingEvent.UNKNOWN_ERROR })
+                    .apply { disposables.add(this) }
+        }
     }
 }

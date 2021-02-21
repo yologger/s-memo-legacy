@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,8 +32,9 @@ class ReorderActivity : AppCompatActivity() {
                 val adapter = recyclerView.adapter as RecyclerViewAdapter
                 val from = viewHolder.adapterPosition
                 val to = target.adapterPosition
-                adapter.moveItem(from, to)
-                adapter.notifyItemMoved(from, to)
+                viewModel.moveItem(from, to)
+//                adapter.moveItem(from, to)
+//                adapter.notifyItemMoved(from, to)
                 return true
             }
 
@@ -59,6 +61,7 @@ class ReorderActivity : AppCompatActivity() {
         setup()
         setupToolbar()
         setupRecyclerView()
+        setupBinding()
     }
 
     private fun setup() {
@@ -71,10 +74,7 @@ class ReorderActivity : AppCompatActivity() {
         toolbar.inflateMenu(R.menu.menu_activity_reorder_toolbar)
         toolbar.setOnMenuItemClickListener {
             when(it?.itemId) {
-                R.id.menu_activity_reorder_toolbar_done -> {
-                    Log.d("TEST", "DONE")
-                    finish()
-                }
+                R.id.menu_activity_reorder_toolbar_done -> { finish() }
             }
             true
         }
@@ -82,7 +82,7 @@ class ReorderActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         // RecyclerView & RecyclerViewAdapter
-        recyclerViewAdapter = RecyclerViewAdapter(viewModel)
+        recyclerViewAdapter = RecyclerViewAdapter()
         recyclerView.adapter = recyclerViewAdapter
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -96,29 +96,30 @@ class ReorderActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun setupBinding() {
+        viewModel.memos.observe(this, Observer { memos ->
+            recyclerViewAdapter.updateMemos(memos.toMutableList())
+        })
+
+        viewModel.routingEvent.observe(this, Observer {
+            when (it) {
+                ReorderVMRoutingEvent.SWAP_SUCCESS -> {
+                    Log.d("TEST" ,"SWAP_SUCCESS")
+                }
+                ReorderVMRoutingEvent.SWAP_FAILURE -> {
+                    Log.d("TEST", "SWAP_FAILURE")
+                }
+            }
+        })
+    }
 }
 
 class RecyclerViewAdapter
 constructor(
-    private val viewModel: ReorderViewModel
 ) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
-//    val memos = mutableListOf<Memo>(
-//        Memo(1, "title1", "content1"),
-//        Memo(2, "title2", "content2"),
-//        Memo(3, "title3", "content3"),
-//        Memo(4, "title4", "content4"),
-//        Memo(5, "title5", "content5"),
-//        Memo(6, "title6", "content6"),
-//        Memo(7, "title7", "content7"),
-//        Memo(8, "title8", "content8"),
-//        Memo(9, "title9", "content9"),
-//        Memo(10, "title10", "content10"),
-//        Memo(11, "title11", "content11"),
-//        Memo(12, "title12", "content12"),
-//        Memo(13, "title13", "content13"),
-//        Memo(14, "title14", "content14")
-//    )
+    private val _memos = mutableListOf<Memo>()
 
     var listener: ClickListener? = null
 
@@ -127,17 +128,27 @@ constructor(
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int = viewModel.memos.size
+    override fun getItemCount(): Int = _memos.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = (holder as ViewHolder).bind(viewModel.memos[position], holder)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = (holder as ViewHolder).bind(_memos[position], holder)
+
+    fun updateMemos(memos: MutableList<Memo>) {
+        _memos.clear()
+        _memos.addAll(memos)
+        notifyDataSetChanged()
+    }
 
     fun moveItem(from: Int, to: Int) {
-        val fromItem = viewModel.memos[from]
-        viewModel.memos.removeAt(from)
+        val fromItem = _memos[from]
+//        Log.d("TEST", "from: ${from}")
+//        Log.d("TEST", "to: ${to}")
+//        Log.d("TEST", "from's position: ${_memos[from].position}")
+//        Log.d("TEST", "to's position: ${_memos[to].position}")
+        _memos.removeAt(from)
         if (to < from) {
-            viewModel.memos.add(to, fromItem)
+            _memos.add(to, fromItem)
         } else {
-            viewModel.memos.add(to-1, fromItem)
+            _memos.add(to-1, fromItem)
         }
     }
 

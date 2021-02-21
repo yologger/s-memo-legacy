@@ -60,7 +60,9 @@ class DetailActivity : AppCompatActivity() {
                 DetailVMRoutingEvent.OPEN_EDIT -> {
                     val nextIntent = Intent(this, EditActivity::class.java)
                     val memoId = intent.getIntExtra("memoId", 0)
+                    val memoPosition = intent.getIntExtra("memoPosition", 0)
                     nextIntent.putExtra("memoId", memoId)
+                    nextIntent.putExtra("memoPosition", memoPosition)
                     startActivity(nextIntent)
                 }
                 DetailVMRoutingEvent.SHOW_TOAST -> {

@@ -49,7 +49,8 @@ class EditActivity : AppCompatActivity() {
             when (it?.itemId) {
                 R.id.menu_activity_edit_toolbar_save -> {
                     val memoId = intent.getIntExtra("memoId", 0)
-                    viewModel.updateMemo(memoId)
+                    val memoPosition = intent.getIntExtra("memoPosition", 0)
+                    viewModel.updateMemo(memoId, memoPosition)
                 }
                 else -> { viewModel.cancel() }
             }

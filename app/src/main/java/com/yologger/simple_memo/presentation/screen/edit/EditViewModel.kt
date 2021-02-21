@@ -36,13 +36,13 @@ constructor(
             .apply { disposables.add(this) }
     }
 
-    fun updateMemo(memoId: Int) {
+    fun updateMemo(memoId: Int, memoPosition: Int) {
         val _title = title.value?.trimEnd()!!
         val _content = content.value?.trimEnd()!!
         if (_title == "" && _content == "") {
             return
         } else {
-            val memo = Memo(id = memoId, title = _title, content = _content)
+            val memo = Memo(id = memoId, title = _title, content = _content, position = memoPosition)
             memoRepository.updateMemo(memo)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

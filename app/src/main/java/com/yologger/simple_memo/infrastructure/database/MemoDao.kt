@@ -7,26 +7,35 @@ import io.reactivex.Flowable
 import io.reactivex.Single
 
 @Dao
-interface MemoDao {
+abstract class MemoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(memoEntity: MemoEntity): Completable
+    abstract fun insert(memoEntity: MemoEntity): Completable
 
-    @Query("SELECT * FROM MemoEntity")
-    fun getAllMemos(): Flowable<List<MemoEntity>>
+    @Query("SELECT * FROM MemoEntity ORDER BY position ASC")
+    abstract fun getAllMemos(): Flowable<List<MemoEntity>>
 
-    @Query("SELECT * FROM MemoEntity WHERE id = :userId")
-    fun getMemoById(userId: Int): Single<MemoEntity>
+    @Query("SELECT * FROM MemoEntity WHERE id = :memoId")
+    abstract fun getMemoById(memoId: Int): Single<MemoEntity>
 
     @Update
-    fun update(memoEntity: MemoEntity): Completable
+    abstract fun update(memoEntity: MemoEntity): Completable
 
     @Delete
-    fun delete(memoEntity: MemoEntity): Completable
+    abstract fun delete(memoEntity: MemoEntity): Completable
 
     @Query("DELETE FROM MemoEntity WHERE id = :memoId")
-    fun deleteById(memoId: Int): Completable
+    abstract fun deleteById(memoId: Int): Completable
 
-    @Query("SELECT COUNT(*) FROM MemoEntity")
-    fun getSize() : Single<Int>
+    @Query("SELECT MAX(position) FROM MemoEntity")
+    abstract fun getMaxPosition() : Single<Int>
+
+    @Query("UPDATE MemoEntity SET position = :position WHERE id = :memoId")
+    abstract fun updatePosition(memoId: Int, position: Int): Completable
+
+//    @Transaction
+//    open fun swapPosition(from: MemoEntity, to: MemoEntity) : Completable {
+//        updatePosition(from.id, to.position)
+//        updatePosition(to.id, from.position)
+//    }
 }

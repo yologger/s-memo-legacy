@@ -9,6 +9,7 @@ import com.yologger.simple_memo.presentation.model.Memo
 import com.yologger.simple_memo.presentation.repository.MemoRepository
 import io.reactivex.*
 import io.reactivex.rxkotlin.cast
+import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.subjects.BehaviorSubject
 
 class MemoRepositoryImpl
@@ -18,6 +19,7 @@ constructor(
 ) : MemoRepository {
 
     override fun createMemo(title: String, content: String, position: Int): Completable {
+        Log.d("TEST", "position: ${position}")
         val memoEntity = MemoEntity(title = title, content = content, position = position)
         return memoDao.insert(memoEntity)
     }
@@ -44,7 +46,23 @@ constructor(
         return memoDao.deleteById(memoId)
     }
 
-    override fun getSize(): Single<Int> {
-        return memoDao.getSize()
+    override fun getMaxPosition(): Single<Int> {
+        return memoDao.getMaxPosition()
+    }
+
+    override fun swapPositions(from: Memo, to: Memo): Completable {
+        return Completable.create { emitter ->
+            memoDao.updatePosition(from.id!!, to.position)
+                    .andThen(memoDao.updatePosition(to.id!!, from.position))
+                    .subscribeBy(
+                            onComplete = {
+                                emitter.onComplete()
+                            },
+                            onError = {
+                                emitter.onError(it)
+                            }
+                    )
+                    .dispose()
+        }
     }
 }

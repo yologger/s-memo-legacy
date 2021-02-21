@@ -20,7 +20,7 @@ constructor(
     val liveDataTitle = MutableLiveData("")
     val liveDataContent = MutableLiveData("")
 
-    private var columnMaxSize = 0
+    private var maxPosition = 0
 
     fun createMemo() {
         val title = liveDataTitle.value?.trimEnd()!!
@@ -28,23 +28,32 @@ constructor(
         if (title == "" && content == "") {
             return
         } else {
-            memoRepository.createMemo(title = title, content = content, position = columnMaxSize)
+            maxPosition += 1
+            memoRepository.createMemo(title = title, content = content, position = maxPosition)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeBy(
-                            onComplete = { routingEvent.setValue(CreateVMRoutingEvent.CREATE_SUCCESS) },
+                            onComplete = {
+                                routingEvent.setValue(CreateVMRoutingEvent.CREATE_SUCCESS)
+                            },
                             onError = { routingEvent.setValue(CreateVMRoutingEvent.CLOSE) })
                     .apply { disposables.add(this) }
         }
     }
 
-    fun getSize() {
-        memoRepository.getSize()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy(
-                onSuccess = { columnMaxSize = it },
-                onError = {}
-            )
+    fun getMaxPosition() {
+        memoRepository.getMaxPosition()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                        onSuccess = {
+                            maxPosition = it
+                            Log.d("TEST", "maxPosition: ${maxPosition}")
+                        },
+                        onError = {
+                            maxPosition = 0
+                            Log.d("TEST", it.localizedMessage)
+                        }
+                )
     }
 }

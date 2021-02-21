@@ -25,9 +25,10 @@ constructor(
         appActivity.startActivity(nextIntent)
     }
 
-    fun openDetail(memoId: Int) {
+    fun openDetail(memoId: Int, memoPosition: Int) {
         val nextIntent = Intent(appActivity, DetailActivity::class.java)
         nextIntent.putExtra("memoId", memoId)
+        nextIntent.putExtra("memoPosition", memoPosition)
         appActivity.startActivity(nextIntent)
     }
 }
