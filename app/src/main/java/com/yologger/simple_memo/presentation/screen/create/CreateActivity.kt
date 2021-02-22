@@ -23,6 +23,7 @@ class CreateActivity : BaseActivity() {
         setupBinding()
         setupToolbar()
         // viewModel.getSize()
+        setTheme(R.style.AppTheme_Dark)
         viewModel.getMaxPosition()
     }
 

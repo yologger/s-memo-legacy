@@ -17,7 +17,6 @@
         android:id="@+id/activity_app_bnv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_activity_app_bottom_navigation_view"/>
 
 </LinearLayout>

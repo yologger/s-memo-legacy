@@ -14,10 +14,11 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yologger.simple_memo.R
+import com.yologger.simple_memo.presentation.base.BaseActivity
 import com.yologger.simple_memo.presentation.model.Memo
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ReorderActivity : AppCompatActivity() {
+class ReorderActivity : BaseActivity() {
 
     private val viewModel: ReorderViewModel by viewModel()
 

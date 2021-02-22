@@ -13,11 +13,12 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yologger.simple_memo.R
+import com.yologger.simple_memo.presentation.base.BaseActivity
 import com.yologger.simple_memo.presentation.model.Memo
 import com.yologger.simple_memo.presentation.model.SelectableMemo
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DeleteActivity : AppCompatActivity() {
+class DeleteActivity : BaseActivity() {
 
     private val viewModel: DeleteViewModel by viewModel()
 

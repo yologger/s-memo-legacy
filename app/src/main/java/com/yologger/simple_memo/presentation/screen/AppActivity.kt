@@ -21,26 +21,18 @@ class AppActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_app)
-//        setup()
-//        setupBottomNavigationView()
+        Log.d("TEST", "onCreate() from AppActivity")
     }
 
     override fun onStart() {
         super.onStart()
-        Log.d("TEST", "AppActivity: onStart()")
         setup()
         setupBottomNavigationView()
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d("TEST", "AppActivity: onStop()")
         currentNavController = null
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        Log.d("TEST", "AppActivity: onActivityResult()")
     }
 
     private fun setup() {

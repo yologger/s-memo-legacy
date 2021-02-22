@@ -17,11 +17,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.yologger.simple_memo.R
+import com.yologger.simple_memo.presentation.base.BaseActivity
 import com.yologger.simple_memo.presentation.screen.edit.EditActivity
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : BaseActivity() {
 
     private val viewModel: DetailViewModel by viewModel()
     // private lateinit var binding: ActivityDetailBinding

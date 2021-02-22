@@ -12,9 +12,10 @@ import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.yologger.simple_memo.R
 import com.yologger.simple_memo.databinding.ActivityEditBinding
+import com.yologger.simple_memo.presentation.base.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class EditActivity : AppCompatActivity() {
+class EditActivity : BaseActivity() {
 
     private val viewModel: EditViewModel by viewModel()
     private lateinit var binding: ActivityEditBinding
