@@ -50,4 +50,8 @@ constructor(
                         onError = { routingEvent.value = ReorderVMRoutingEvent.UPDATE_POSITIONS_FAILURE }
                 )
     }
+
+    fun close() {
+        routingEvent.value = ReorderVMRoutingEvent.CLOSE
+    }
 }

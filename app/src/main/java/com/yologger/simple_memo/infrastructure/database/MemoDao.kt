@@ -27,6 +27,9 @@ abstract class MemoDao {
     @Query("DELETE FROM MemoEntity WHERE id = :memoId")
     abstract fun deleteById(memoId: Int): Completable
 
+    @Delete
+    abstract fun deleteMemos(memos: List<MemoEntity>) : Completable
+
     @Query("SELECT MAX(position) FROM MemoEntity")
     abstract fun getMaxPosition() : Single<Int>
 

@@ -43,10 +43,12 @@ class ReorderActivity : AppCompatActivity() {
     }
 
     private fun setupToolbar() {
+        toolbar.setNavigationIcon(R.drawable.icon_close_filled_black_24)
+        toolbar.setNavigationOnClickListener { viewModel.close() }
         toolbar.inflateMenu(R.menu.menu_activity_reorder_toolbar)
         toolbar.setOnMenuItemClickListener {
             when (it?.itemId) {
-                R.id.menu_activity_reorder_toolbar_done -> {
+                R.id.menu_activity_reorder_toolbar_save -> {
                     recyclerViewAdapter.updatePositions()
                 }
             }
@@ -84,6 +86,9 @@ class ReorderActivity : AppCompatActivity() {
                 }
                 ReorderVMRoutingEvent.UPDATE_POSITIONS_FAILURE -> {
 
+                }
+                ReorderVMRoutingEvent.CLOSE -> {
+                    finish()
                 }
             }
         })

@@ -46,12 +46,16 @@ constructor(
         return memoDao.deleteById(memoId)
     }
 
+    override fun deleteMemos(memos: List<Memo>): Completable {
+        val memoEntities = memos.map { MemoEntity(id = it.id!!, title = it.title, content = it.content, position = it.position) }
+        return memoDao.deleteMemos(memoEntities)
+    }
+
     override fun getMaxPosition(): Single<Int> {
         return memoDao.getMaxPosition()
     }
 
     override fun swapPositions(from: Memo, to: Memo): Completable {
-        Log.d("TEST","swapPosition()")
         return Completable.create { emitter ->
             memoDao
                     .updatePosition(from.id!!, to.position)
