@@ -13,4 +13,5 @@ interface MemoRepository {
     fun deleteMemoById(memoId: Int): Completable
     fun getMaxPosition(): Single<Int>
     fun swapPositions(from: Memo, to: Memo): Completable
+    fun updateMemos(memos: List<Memo>) : Completable
 }

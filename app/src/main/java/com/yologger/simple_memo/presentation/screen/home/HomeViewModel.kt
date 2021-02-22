@@ -18,7 +18,7 @@ import io.reactivex.subjects.BehaviorSubject
 
 class HomeViewModel
 constructor(
-    private val memoRepository: MemoRepository
+        private val memoRepository: MemoRepository
 ) : BaseViewModel() {
 
     val routingEvent: SingleLiveEvent<HomeVMRoutingEvent> = SingleLiveEvent()
@@ -29,22 +29,19 @@ constructor(
 
     fun fetchAllMemos() {
         memoRepository.fetchAllMemos()
-            .take(1)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy(
-                onNext = {
-                    Log.d("TEST", "HomeViewModel: fetchAllMemos()")
-                    Log.d("TEST", it.toString())
-                    _memos = it.toMutableList()
-                    _memosLiveData.setValue(_memos)
-                },
-                onError = {
-                    Log.d("TEST", "ERROR")
-                    Log.d("TEST", it.localizedMessage)
-                },
-                onComplete = {  }
-            ).apply { disposables.add(this) }
+                .take(1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                        onNext = {
+                            Log.d("TEST", "HomeViewModel: fetchAllMemos()")
+                            Log.d("TEST", it.toString())
+                            _memos = it.toMutableList()
+                            _memosLiveData.setValue(_memos)
+                        },
+                        onError = { routingEvent.value = HomeVMRoutingEvent.UNKNOWN_ERROR },
+                        onComplete = { }
+                ).apply { disposables.add(this) }
     }
 
     fun deleteMemo(position: Int) {
@@ -63,4 +60,10 @@ constructor(
                     .apply { disposables.add(this) }
         }
     }
+
+    fun openEdit() { routingEvent.value = HomeVMRoutingEvent.OPEN_DETAIL }
+
+    fun openNewPost() { routingEvent.value = HomeVMRoutingEvent.OPEN_NEW_POST}
+
+    fun openDetail() { routingEvent.value = HomeVMRoutingEvent.OPEN_DETAIL }
 }

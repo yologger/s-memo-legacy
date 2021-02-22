@@ -33,9 +33,6 @@ abstract class MemoDao {
     @Query("UPDATE MemoEntity SET position = :position WHERE id = :memoId")
     abstract fun updatePosition(memoId: Int, position: Int): Completable
 
-//    @Transaction
-//    open fun swapPosition(from: MemoEntity, to: MemoEntity) : Completable {
-//        updatePosition(from.id, to.position)
-//        updatePosition(to.id, from.position)
-//    }
+    @Update
+    abstract fun updateMemos(vararg memoEntities: MemoEntity): Completable
 }

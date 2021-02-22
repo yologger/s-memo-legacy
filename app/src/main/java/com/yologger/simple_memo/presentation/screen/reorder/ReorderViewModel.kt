@@ -11,10 +11,11 @@ import com.yologger.simple_memo.presentation.util.SingleLiveEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class ReorderViewModel
 constructor(
-    private val memoRepository: MemoRepository
+        private val memoRepository: MemoRepository
 ) : BaseViewModel() {
 
     val routingEvent: SingleLiveEvent<ReorderVMRoutingEvent> = SingleLiveEvent()
@@ -24,37 +25,29 @@ constructor(
 
     fun fetchAllMemos() {
         memoRepository.fetchAllMemos()
-            .take(1)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy(
-                onNext = {
-                    _memos = it.toMutableList()
-                    memos.value = _memos
-                },
-                onError = {},
-                onComplete = {}
-            ).apply { disposables.add(this) }
-    }
-
-    fun moveItem(from: Int, to: Int) {
-//        Log.d("TEST", "from: ${from}")
-//        Log.d("TEST", "to: ${to}")
-        val _from = _memos[from]
-        val _to = _memos[to]
-        Log.d("TEST", "FROM MEMO: ${_from.toString()}")
-        Log.d("TEST", "TO MEMOL ${_to.toString()}")
-        memoRepository.swapPositions(_from, _to)
+                .take(1)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
-                        onComplete = {
-
+                        onNext = {
+                            _memos = it.toMutableList()
+                            memos.value = _memos
                         },
-                        onError = {}
+                        onError = {},
+                        onComplete = {}
                 ).apply { disposables.add(this) }
     }
 
-    fun swapPositions(from: Memo, to: Memo) {
+    fun updateMemos(memos: MutableList<Memo>) {
+        for ((index, memo) in memos.withIndex()) {
+            memos[index].position = index + 1
+        }
+        memoRepository.updateMemos(memos)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                        onComplete = { routingEvent.value = ReorderVMRoutingEvent.UPDATE_POSITIONS_SUCCESS },
+                        onError = { routingEvent.value = ReorderVMRoutingEvent.UPDATE_POSITIONS_FAILURE }
+                )
     }
 }

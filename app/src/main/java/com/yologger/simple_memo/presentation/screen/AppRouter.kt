@@ -5,6 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.yologger.simple_memo.R
 import com.yologger.simple_memo.presentation.screen.create.CreateActivity
+import com.yologger.simple_memo.presentation.screen.delete.DeleteActivity
 import com.yologger.simple_memo.presentation.screen.detail.DetailActivity
 import com.yologger.simple_memo.presentation.screen.reorder.ReorderActivity
 
@@ -29,6 +30,11 @@ constructor(
         val nextIntent = Intent(appActivity, DetailActivity::class.java)
         nextIntent.putExtra("memoId", memoId)
         nextIntent.putExtra("memoPosition", memoPosition)
+        appActivity.startActivity(nextIntent)
+    }
+
+    fun openDelete() {
+        val nextIntent = Intent(appActivity, DeleteActivity::class.java)
         appActivity.startActivity(nextIntent)
     }
 }

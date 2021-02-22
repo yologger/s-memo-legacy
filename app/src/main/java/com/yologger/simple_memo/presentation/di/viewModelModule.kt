@@ -1,6 +1,7 @@
 package com.yologger.simple_memo.presentation.di
 
 import com.yologger.simple_memo.presentation.screen.create.CreateViewModel
+import com.yologger.simple_memo.presentation.screen.delete.DeleteViewModel
 import com.yologger.simple_memo.presentation.screen.detail.DetailViewModel
 import com.yologger.simple_memo.presentation.screen.edit.EditViewModel
 import com.yologger.simple_memo.presentation.screen.home.HomeViewModel
@@ -14,4 +15,5 @@ val viewModelModule = module {
      viewModel { DetailViewModel(get()) }
      viewModel { EditViewModel(get()) }
      viewModel { ReorderViewModel(get()) }
+     viewModel { DeleteViewModel(get()) }
 }

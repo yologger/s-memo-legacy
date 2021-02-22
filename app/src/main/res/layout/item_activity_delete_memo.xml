@@ -8,22 +8,12 @@
     android:padding="@dimen/padding_md">
 
     <TextView
-        android:id="@+id/item_activity_reorder_memo_tv_title"
+        android:id="@+id/item_activity_delete_memo_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <ImageView
-        android:id="@+id/item_activity_reorder_iv_reorder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/icon_reorder_filled_black_24"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

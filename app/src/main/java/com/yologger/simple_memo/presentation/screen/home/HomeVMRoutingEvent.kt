@@ -4,7 +4,6 @@ enum class HomeVMRoutingEvent {
     OPEN_DETAIL,
     OPEN_NEW_POST,
     OPEN_EDIT,
-    SHOW_ERROR,
     DELETE_SUCCESS,
     UNKNOWN_ERROR
 }

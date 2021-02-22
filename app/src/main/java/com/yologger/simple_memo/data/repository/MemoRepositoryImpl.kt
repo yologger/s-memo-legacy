@@ -51,8 +51,10 @@ constructor(
     }
 
     override fun swapPositions(from: Memo, to: Memo): Completable {
+        Log.d("TEST","swapPosition()")
         return Completable.create { emitter ->
-            memoDao.updatePosition(from.id!!, to.position)
+            memoDao
+                    .updatePosition(from.id!!, to.position)
                     .andThen(memoDao.updatePosition(to.id!!, from.position))
                     .subscribeBy(
                             onComplete = {
@@ -64,5 +66,17 @@ constructor(
                     )
                     .dispose()
         }
+    }
+
+    override fun updateMemos(memos: List<Memo>): Completable {
+        val memoEntities = memos.map {
+            MemoEntity(
+                    id = it.id!!,
+                    title = it.title,
+                    content = it.content,
+                    position = it.position
+            )
+        }
+        return memoDao.updateMemos(*memoEntities.toTypedArray())
     }
 }

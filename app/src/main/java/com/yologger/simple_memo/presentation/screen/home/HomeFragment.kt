@@ -68,31 +68,18 @@ class HomeFragment : BaseFragment() {
 
     private fun setupBinding() {
         viewModel.memosLiveData.observe(viewLifecycleOwner, Observer { memos ->
-            Log.d("TEST", "UPDATED!!!!!!")
             recyclerViewAdapter.update(memos)
         })
 
         viewModel.routingEvent.observe(viewLifecycleOwner, Observer { event ->
             when(event) {
-                HomeVMRoutingEvent.OPEN_NEW_POST -> {
-
-                }
-                HomeVMRoutingEvent.OPEN_EDIT -> {
-
-                }
-                HomeVMRoutingEvent.OPEN_DETAIL -> {
-
-                }
-                HomeVMRoutingEvent.SHOW_ERROR -> {
-
-                }
+                HomeVMRoutingEvent.OPEN_NEW_POST -> { }
+                HomeVMRoutingEvent.OPEN_EDIT -> { }
+                HomeVMRoutingEvent.OPEN_DETAIL -> { }
                 HomeVMRoutingEvent.DELETE_SUCCESS -> {
                     Toast.makeText(activity, "DELETED SUCCESSFULLY", Toast.LENGTH_SHORT).show()
-
                 }
-                HomeVMRoutingEvent.UNKNOWN_ERROR -> {
-
-                }
+                HomeVMRoutingEvent.UNKNOWN_ERROR -> { }
             }
         })
     }
@@ -109,7 +96,8 @@ class HomeFragment : BaseFragment() {
 
     private fun setupSpeedDial() {
         speedDialView.addActionItem(SpeedDialActionItem.Builder(R.id.fragment_home_sd_add, R.drawable.icon_create_filled_black_24).setLabel("NEW POST").create())
-        speedDialView.addActionItem(SpeedDialActionItem.Builder(R.id.fragment_home_sd_edit, R.drawable.icon_reorder_filled_black_24).setLabel("EDIT").create())
+        speedDialView.addActionItem(SpeedDialActionItem.Builder(R.id.fragment_home_sd_edit, R.drawable.icon_reorder_filled_black_24).setLabel("REORDER").create())
+        speedDialView.addActionItem(SpeedDialActionItem.Builder(R.id.fragment_home_sd_delete, R.drawable.icon_delete_filed_black_24).setLabel("DELETE").create())
         speedDialView.setOnActionSelectedListener {
             when(it.id) {
                 R.id.fragment_home_sd_add -> {
@@ -119,6 +107,11 @@ class HomeFragment : BaseFragment() {
                 }
                 R.id.fragment_home_sd_edit -> {
                     router.openEdit()
+                    speedDialView.close()
+                    true
+                }
+                R.id.fragment_home_sd_delete -> {
+                    router.openDelete()
                     speedDialView.close()
                     true
                 }
@@ -142,7 +135,6 @@ class HomeFragment : BaseFragment() {
 
         fun update(memos: List<Memo>) {
             this.memos = memos.toMutableList()
-            Log.d("TEST", "THIS!!: ${this.memos.toString()}")
             notifyDataSetChanged()
         }
 
@@ -152,6 +144,7 @@ class HomeFragment : BaseFragment() {
 
             fun bind(memo: Memo) {
                 textViewTitle.text = memo.title
+
                 itemView.setOnClickListener {
                     val position = adapterPosition
                     if (position != RecyclerView.NO_POSITION) {
