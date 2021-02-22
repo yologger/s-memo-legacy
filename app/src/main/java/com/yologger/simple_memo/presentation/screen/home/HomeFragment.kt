@@ -59,6 +59,7 @@ class HomeFragment : BaseFragment() {
         setupSearchView()
         setupRecyclerView()
         setupSpeedDial()
+
     }
 
     override fun onStart() {

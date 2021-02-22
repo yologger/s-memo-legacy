@@ -2,8 +2,6 @@ package com.yologger.simple_memo.presentation.base
 
 import android.content.Context
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.yologger.simple_memo.R
 import com.yologger.simple_memo.application.Constant

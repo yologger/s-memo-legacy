@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppStyle"></style>
+    <style name="AppStyle.BottomNavigationView">
+        <item name="itemIconTint">#3F51B5</item>
+        <item name="itemTextColor">#2196F3</item>
+    </style>
+    <style name="AppStyle.BottomNavigationView.Light">
+        <item name="itemIconTint">#3F51B5</item>
+        <item name="itemTextColor">#2196F3</item>
+    </style>
+    <style name="AppStyle.BottomNavigationView.Dark">
+        <item name="itemIconTint">#A33FB5</item>
+        <item name="itemTextColor">#E521F3</item>
+    </style>
+
+
+</resources>

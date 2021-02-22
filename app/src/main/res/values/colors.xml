@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Default Color -->
+    <color name="color.white">#FFFFFF</color>
+    <color name="color.black">#000000</color>
+    <color name="color.navy">#000559</color>
+    <color name="color.darkNavy">#00022B</color>
 
-    <color name="light.primary.light">#000559</color>
-    <color name="light.primary.normal">#00022B</color>
-    <color name="light.primary.dark">#000115</color>
+
+    <!-- Light Theme -->
+    <color name="light.primary">#000559</color>
+    <color name="light.primaryVariant">#00022B</color>
+    <color name="light.onPrimary">@color/color.white</color>
+    <color name="light.secondary">#000559</color>
+    <color name="light.secondaryVariant">#00022B</color>
+    <color name="light.onSecondary">#00022B</color>
+    <color name="light.colorBackground">@color/color.white</color>
+    <color name="light.colorOnBackground">@color/color.white</color>
+    <color name="light.colorSurface">@color/color.white</color>
+    <color name="light.colorOnSurface">@color/color.white</color>
+    <color name="light.colorError">@color/color.white</color>
+    <color name="light.colorOnError">@color/color.white</color>
+
+    <!-- Dark Theme -->
+    <color name="dark.primary">#FF5EC9</color>
+    <color name="dark.primaryVariant">#E189FF</color>
+    <color name="dark.onPrimary">#00022B</color>
+    <color name="dark.secondary">#000559</color>
+    <color name="dark.secondaryVariant">#00022B</color>
+    <color name="dark.onSecondary">#00022B</color>
+    <color name="dark.colorBackground">@color/color.black</color>
+    <color name="dark.colorOnBackground">@color/color.white</color>
+    <color name="dark.colorSurface">@color/color.white</color>
+    <color name="dark.colorOnSurface">@color/color.white</color>
+    <color name="dark.colorError">@color/color.white</color>
+    <color name="dark.colorOnError">@color/color.white</color>
 </resources>

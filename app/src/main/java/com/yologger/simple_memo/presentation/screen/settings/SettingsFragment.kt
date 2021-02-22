@@ -22,7 +22,6 @@ class SettingsFragment : BaseFragment() {
     private var param2: String? = null
 
     private lateinit var switchTheme: Switch
-    private lateinit var button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +38,6 @@ class SettingsFragment : BaseFragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_settings, container, false)
         switchTheme = rootView.findViewById(R.id.fragment_settings_sw_theme)
-        button = rootView.findViewById(R.id.fragment_settings_btn)
         return rootView
     }
 
