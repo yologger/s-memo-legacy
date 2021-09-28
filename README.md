@@ -1,7 +1,11 @@
-# Heart to Heart for iOS
+# Simple Memo for iOS
 
 ## Introduction
-**Heart to Heart** is a SNS application. This app is similar to Facebook. You can also download Heart to Heart for Android [here](https://github.com/yologger/heart_to_heart_android). Heart to heart is based on **MVVM** with **Clean Architecture**.
+**S Memo** is a simple notepad app. You can also see Heart to Heart for iOS [here](https://github.com/yologger/simple_memo_ios). Heart to heart is based on **MVVM**.
+
+## Download
+You can download on Google PlayStore.
+<a href='https://play.google.com/store/apps/details?id=com.yologger.simple_memo.alpha'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="280"/></a>
 
 ## Screenshots
 <img src="/imgs/1.jpg" width="200">
