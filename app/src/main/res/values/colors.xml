@@ -1,37 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Default Color -->
-    <color name="color.white">#FFFFFF</color>
-    <color name="color.black">#000000</color>
-    <color name="color.navy">#000559</color>
-    <color name="color.darkNavy">#00022B</color>
+    <color name="White">#FFFFFF</color>
+    <color name="Black">#000000</color>
+    <color name="DarkGrey">#1F1F1F</color>
 
+    <color name="Navy.light">#000000</color>
+    <color name="Navy.default">#000000</color>
+    <color name="Navy.dark">#000000</color>
 
-    <!-- Light Theme -->
-    <color name="light.primary">#000559</color>
-    <color name="light.primaryVariant">#00022B</color>
-    <color name="light.onPrimary">@color/color.white</color>
-    <color name="light.secondary">#000559</color>
-    <color name="light.secondaryVariant">#00022B</color>
-    <color name="light.onSecondary">#00022B</color>
-    <color name="light.colorBackground">@color/color.white</color>
-    <color name="light.colorOnBackground">@color/color.white</color>
-    <color name="light.colorSurface">@color/color.white</color>
-    <color name="light.colorOnSurface">@color/color.white</color>
-    <color name="light.colorError">@color/color.white</color>
-    <color name="light.colorOnError">@color/color.white</color>
+    <color name="Sky.light">#00CCFF</color>
+    <color name="Sky.default">#00CCFF</color>
+    <color name="Sky.dark">#00CCFF</color>
 
-    <!-- Dark Theme -->
-    <color name="dark.primary">#FF5EC9</color>
-    <color name="dark.primaryVariant">#E189FF</color>
-    <color name="dark.onPrimary">#00022B</color>
-    <color name="dark.secondary">#000559</color>
-    <color name="dark.secondaryVariant">#00022B</color>
-    <color name="dark.onSecondary">#00022B</color>
-    <color name="dark.colorBackground">@color/color.black</color>
-    <color name="dark.colorOnBackground">@color/color.white</color>
-    <color name="dark.colorSurface">@color/color.white</color>
-    <color name="dark.colorOnSurface">@color/color.white</color>
-    <color name="dark.colorError">@color/color.white</color>
-    <color name="dark.colorOnError">@color/color.white</color>
+    <color name="Pink.light">#FF529C</color>
+    <color name="Pink.default">#FF006E</color>
+    <color name="Pink.dark">#B3004D</color>
+
+    <color name="Yellow.light">#FFF2C5</color>
+    <color name="Yellow.default">#FDEBAE</color>
+    <color name="Yellow.dark">#FDE594</color>
+
+    <color name="Gold.light">#E3CC7E</color>
+    <color name="Gold.default">#BC923F</color>
+    <color name="Gold.dark">#9F8A40</color>
+
+    <color name="Primary">@color/Navy.default</color>
+    <color name="PrimaryVariant">@color/Navy.dark</color>
+    <color name="OnPrimary">@color/White</color>
+    <color name="Secondary">@color/Navy.default</color>
+    <color name="SecondaryVariant">@color/Navy.dark</color>
+    <color name="OnSecondary">@color/White</color>
+
+<!--    <color name="ColorBackground">@color/color.white</color>-->
+<!--    <color name="ColorOnBackground">@color/color.white</color>-->
+<!--    <color name="ColorSurface">@color/color.white</color>-->
+<!--    <color name="ColorOnSurface">@color/color.white</color>-->
+<!--    <color name="ColorError">@color/color.white</color>-->
+<!--    <color name="ColorOnError">@color/color.white</color>-->
+
+    <color name="itemCheckedColor">@color/Pink.default</color>
+    <color name="StatusBarBackground">@color/Black</color>
+    <color name="ToolbarBackground">@color/Black</color>
+    <color name="ToolbarTitleTextColor">@color/White</color>
+
 </resources>

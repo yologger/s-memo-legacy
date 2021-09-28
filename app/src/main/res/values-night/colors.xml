@@ -1,2 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <color name="White">#FFFFFF</color>
+    <color name="Black">#000000</color>
+    <color name="DarkGrey">#1F1F1F</color>
+
+    <color name="Navy.light">#000000</color>
+    <color name="Navy.default">#000000</color>
+    <color name="Navy.dark">#000000</color>
+
+    <color name="Sky.light">#00CCFF</color>
+    <color name="Sky.default">#00CCFF</color>
+    <color name="Sky.dark">#00CCFF</color>
+
+    <color name="Pink.light">#FF529C</color>
+    <color name="Pink.default">#FF006E</color>
+    <color name="Pink.dark">#B3004D</color>
+
+    <color name="Yellow.light">#FFF2C5</color>
+    <color name="Yellow.default">#FDEBAE</color>
+    <color name="Yellow.dark">#FDE594</color>
+
+    <color name="Gold.light">#E3CC7E</color>
+    <color name="Gold.default">#BC923F</color>
+    <color name="Gold.dark">#9F8A40</color>
+
+    <color name="Primary">@color/Yellow.default</color>
+    <color name="PrimaryVariant">@color/Yellow.dark</color>
+    <color name="OnPrimary">@color/Black</color>
+    <color name="Secondary">@color/Yellow.default</color>
+    <color name="SecondaryVariant">@color/Yellow.dark</color>
+    <color name="OnSecondary">@color/Black</color>
+    <!--    <color name="ColorBackground">@color/color.white</color>-->
+    <!--    <color name="ColorOnBackground">@color/color.white</color>-->
+    <!--    <color name="ColorSurface">@color/color.white</color>-->
+    <!--    <color name="ColorOnSurface">@color/color.white</color>-->
+    <!--    <color name="ColorError">@color/color.white</color>-->
+    <!--    <color name="ColorOnError">@color/color.white</color>-->
+
+    <color name="itemCheckedColor">@color/Yellow.light</color>
+    <color name="StatusBarBackground">@color/DarkGrey</color>
+    <color name="ToolbarBackground">@color/DarkGrey</color>
+    <color name="ToolbarTitleTextColor">@color/White</color>
+</resources>

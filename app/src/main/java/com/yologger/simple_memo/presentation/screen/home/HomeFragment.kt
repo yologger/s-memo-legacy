@@ -59,7 +59,6 @@ class HomeFragment : BaseFragment() {
         setupSearchView()
         setupRecyclerView()
         setupSpeedDial()
-
     }
 
     override fun onStart() {
@@ -78,7 +77,7 @@ class HomeFragment : BaseFragment() {
                 HomeVMRoutingEvent.OPEN_EDIT -> { }
                 HomeVMRoutingEvent.OPEN_DETAIL -> { }
                 HomeVMRoutingEvent.DELETE_SUCCESS -> {
-                    Toast.makeText(activity, "DELETED SUCCESSFULLY", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireActivity(), getString(R.string.fragment_home_message_delete_success), Toast.LENGTH_SHORT).show()
                 }
                 HomeVMRoutingEvent.UNKNOWN_ERROR -> { }
             }
@@ -96,9 +95,9 @@ class HomeFragment : BaseFragment() {
     private fun setupSearchView() {  }
 
     private fun setupSpeedDial() {
-        speedDialView.addActionItem(SpeedDialActionItem.Builder(R.id.fragment_home_sd_add, R.drawable.icon_create_filled_black_24).setLabel("NEW POST").create())
-        speedDialView.addActionItem(SpeedDialActionItem.Builder(R.id.fragment_home_sd_edit, R.drawable.icon_reorder_filled_black_24).setLabel("REORDER").create())
-        speedDialView.addActionItem(SpeedDialActionItem.Builder(R.id.fragment_home_sd_delete, R.drawable.icon_delete_filed_black_24).setLabel("DELETE").create())
+        speedDialView.addActionItem(SpeedDialActionItem.Builder(R.id.fragment_home_sd_add, R.drawable.icon_create_filled_black_24).setLabel(getString(R.string.fragment_home_btn_new_post)).create())
+        speedDialView.addActionItem(SpeedDialActionItem.Builder(R.id.fragment_home_sd_edit, R.drawable.icon_reorder_filled_black_24).setLabel(getString(R.string.fragment_home_btn_reorder)).create())
+        speedDialView.addActionItem(SpeedDialActionItem.Builder(R.id.fragment_home_sd_delete, R.drawable.icon_delete_filed_black_24).setLabel(getString(R.string.fragment_home_btn_delete)).create())
         speedDialView.setOnActionSelectedListener {
             when(it.id) {
                 R.id.fragment_home_sd_add -> {
@@ -125,6 +124,7 @@ class HomeFragment : BaseFragment() {
     constructor(
         private var memos: MutableList<Memo> = mutableListOf()
     ) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_fragment_home_memo, parent, false)
@@ -157,13 +157,12 @@ class HomeFragment : BaseFragment() {
 
                 itemView.setOnLongClickListener {
                     val builder = AlertDialog.Builder(activity)
-                    builder.setMessage("Want to delete this post?")
-                    builder.setPositiveButton("OK") { _, _ ->
+                    builder.setMessage(getString(R.string.fragment_home_message_delete))
+                    builder.setPositiveButton(getString(R.string.fragment_home_message_alert_ok)) { _, _ ->
                         val position = adapterPosition
                         viewModel.deleteMemo(position)
                     }
-                    builder.setNegativeButton("CANCEL") { _, _ ->
-                        Log.d("TEST", "CANCEL")
+                    builder.setNegativeButton(getString(R.string.fragment_home_message_alert_cancel)) { _, _ ->
                     }
                     builder.show()
                     true

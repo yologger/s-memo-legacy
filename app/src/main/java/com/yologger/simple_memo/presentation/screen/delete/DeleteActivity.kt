@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -54,7 +55,10 @@ class DeleteActivity : BaseActivity() {
 
         viewModel.routingEvent.observe(this, Observer {
             when (it) {
-                DeleteVMRoutingEvent.DELETE_SUCCESS -> { finish() }
+                DeleteVMRoutingEvent.DELETE_SUCCESS -> {
+                    Toast.makeText(this, getString(R.string.activity_delete_message_delete_success), Toast.LENGTH_SHORT).show()
+                    finish()
+                }
                 DeleteVMRoutingEvent.DELETE_FAILURE -> { }
                 DeleteVMRoutingEvent.CLOSE -> { finish() }
             }
@@ -63,17 +67,17 @@ class DeleteActivity : BaseActivity() {
 
     private fun setupToolbar() {
         toolbar.setNavigationIcon(R.drawable.icon_close_filled_black_24)
-        toolbar.setNavigationOnClickListener {  }
+        toolbar.setNavigationOnClickListener { viewModel.close() }
         toolbar.inflateMenu(R.menu.menu_activity_delete_toolbar)
         toolbar.setOnMenuItemClickListener {
             when (it?.itemId) {
                 R.id.menu_activity_delete_toolbar_delete -> {
                     val builder = AlertDialog.Builder(coordinatorLayout.context)
-                    builder.setMessage("Want to delete these posts?")
-                    builder.setPositiveButton("OK") { _, _ ->
+                    builder.setMessage(getString(R.string.activity_delete_message_delete))
+                    builder.setPositiveButton(getString(R.string.activity_delete_message_alert_ok)) { _, _ ->
                         recyclerViewAdapter.deleteMemos()
                     }
-                    builder.setNegativeButton("CANCEL") { _, _ ->
+                    builder.setNegativeButton(getString(R.string.activity_delete_message_alert_cancel)) { _, _ ->
                     }
                     builder.show()
                 }

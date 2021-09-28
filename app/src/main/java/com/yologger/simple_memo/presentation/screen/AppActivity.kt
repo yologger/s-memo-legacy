@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yologger.simple_memo.R
 import com.yologger.simple_memo.presentation.base.BaseActivity
@@ -39,17 +42,7 @@ class AppActivity : BaseActivity() {
     }
 
     private fun setupBottomNavigationView() {
-        val navGraphIds = listOf(R.navigation.graph_home, R.navigation.graph_settings)
-        val controller = bottomNavigationView.setupWithNavController(
-            navGraphIds = navGraphIds,
-            fragmentManager = supportFragmentManager,
-            containerId = R.id.activity_app_fcv,
-            intent = intent
-        )
-        currentNavController = controller
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return currentNavController?.value?.navigateUp() ?: false
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.activity_app_fm_nav_host) as NavHostFragment
+        NavigationUI.setupWithNavController(bottomNavigationView, navHostFragment.navController)
     }
 }

@@ -13,10 +13,7 @@ class AppRouter
 constructor(
     private val appActivity: AppActivity
 ) {
-    private val navController: NavController by lazy { Navigation.findNavController(appActivity, R.id.activity_app_fcv) }
-
     fun openCreate() {
-        // navController.navigate(R.id.action_homeFragment_to_createFragment)
         val nextIntent = Intent(appActivity, CreateActivity::class.java)
         appActivity.startActivity(nextIntent)
     }

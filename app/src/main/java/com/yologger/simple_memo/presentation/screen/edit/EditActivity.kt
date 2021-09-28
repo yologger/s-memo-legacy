@@ -66,7 +66,7 @@ class EditActivity : BaseActivity() {
         viewModel.routingEvent.observe(this, Observer {
             when (it) {
                 EditVMRoutingEvent.SAVE_AND_CLOSE -> {
-                    Toast.makeText(this, "UPDATED SUCCESSFULLY", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.activity_edit_message_update_success), Toast.LENGTH_SHORT).show()
                     finish()
                 }
                 EditVMRoutingEvent.CANCEL -> { finish() }

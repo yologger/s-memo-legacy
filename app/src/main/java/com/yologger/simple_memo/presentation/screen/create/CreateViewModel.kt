@@ -26,10 +26,18 @@ constructor(
         val title = liveDataTitle.value?.trimEnd()!!
         val content = liveDataContent.value?.trimEnd()!!
         if (title == "" && content == "") {
-            return
+            routingEvent.value = CreateVMRoutingEvent.CLOSE
         } else {
+            val _title = if (title == "") {
+                val words = content.split("\\s+".toRegex()).map { word ->
+                    word.replace("""^[,\.]|[,\.]$""".toRegex(), "")
+                }
+                words[0]
+            } else {
+                title
+            }
             maxPosition += 1
-            memoRepository.createMemo(title = title, content = content, position = maxPosition)
+            memoRepository.createMemo(title = _title, content = content, position = maxPosition)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeBy(

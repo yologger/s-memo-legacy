@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/graph_home"
-        android:icon="@drawable/icon_home_filled_black_24"
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/selector_icon_home_black_24"
         android:contentDescription="Home"
-        android:title="Home" />
+        app:showAsAction="always"
+        android:title="@string/activity_app_btn_home" />
     <item
-        android:id="@+id/graph_settings"
-        android:icon="@drawable/icon_settings_filled_black_24"
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/selector_icon_setting_black_24"
         android:contentDescription="Settings"
-        android:title="Settings" />
+        app:showAsAction="always"
+        android:title="@string/activity_app_btn_settings" />
 </menu>

@@ -67,22 +67,22 @@ class DetailActivity : BaseActivity() {
                     startActivity(nextIntent)
                 }
                 DetailVMRoutingEvent.SHOW_TOAST -> {
-                    Toast.makeText(this, "Tap twice to edit.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.activity_detail_message_tap), Toast.LENGTH_SHORT).show()
                 }
                 DetailVMRoutingEvent.SHOW_DELETE_DIALOG -> {
                     val builder = AlertDialog.Builder(coordinatorLayout.context)
-                    builder.setMessage("Want to delete this post?")
-                    builder.setPositiveButton("OK") { _, _ ->
+                    builder.setMessage(getString(R.string.activity_detail_message_delete))
+                    builder.setPositiveButton(getString(R.string.activity_detail_message_alert_ok)) { _, _ ->
                         val memoId = intent.getIntExtra("memoId", 0)
                         viewModel.deletePost(memoId)
                     }
-                    builder.setNegativeButton("CANCEL") { _, _ ->
+                    builder.setNegativeButton(getString(R.string.activity_detail_message_alert_cancel)) { _, _ ->
 
                     }
                     builder.show()
                 }
                 DetailVMRoutingEvent.DELETE_AND_CLOSE -> {
-                    Toast.makeText(this, "DELETED SUCCESSFULLY", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.activity_detail_message_delete_success), Toast.LENGTH_SHORT).show()
                     finish()
                 }
                 DetailVMRoutingEvent.UNKNOWN_ERROR -> {
@@ -100,7 +100,7 @@ class DetailActivity : BaseActivity() {
         toolbar.setOnMenuItemClickListener {
             when(it?.itemId) {
                 R.id.menu_activity_detail_toolbar_delete -> { viewModel.showDeleteDialog() }
-                R.id.menu_activity_detail_toolbar_edit -> { viewModel.openEdit() }
+                // R.id.menu_activity_detail_toolbar_edit -> { viewModel.openEdit() }
             }
             true
         }

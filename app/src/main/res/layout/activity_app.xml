@@ -7,17 +7,25 @@
     android:orientation="vertical"
     tools:context=".presentation.screen.AppActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/activity_app_fcv"
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/activity_app_fcv"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="1" />-->
+
+    <fragment
+        android:id="@+id/activity_app_fm_nav_host"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/graph_app"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/activity_app_bnv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/AppStyle.BottomNavigationView.Light"
         app:menu="@menu/menu_activity_app_bottom_navigation_view"/>
 
 </LinearLayout>

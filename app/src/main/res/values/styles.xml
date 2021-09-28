@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppStyle"></style>
-    <style name="AppStyle.BottomNavigationView">
-        <item name="itemIconTint">#3F51B5</item>
-        <item name="itemTextColor">#2196F3</item>
+    <!-- Toolbar Style -->
+    <style name="Base_ToolbarStyle">
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:background">@color/ToolbarBackground</item>
+        <item name="android:theme">@style/Base_ToolbarTheme</item>
+        <item name="titleTextAppearance">@style/ToolbarTitleTextAppearance</item>
+        <item name="subtitleTextAppearance">@style/ToolbarSubTitleTextAppearance</item>
+        <item name="elevation">4dp</item>
     </style>
-    <style name="AppStyle.BottomNavigationView.Light">
-        <item name="itemIconTint">#3F51B5</item>
-        <item name="itemTextColor">#2196F3</item>
+    <style name="Base_ToolbarTheme">
+        <item name="android:textColorPrimary">@color/ToolbarTitleTextColor</item>
+        <item name="android:textColorSecondary">@color/ToolbarTitleTextColor</item>
     </style>
-    <style name="AppStyle.BottomNavigationView.Dark">
-        <item name="itemIconTint">#A33FB5</item>
-        <item name="itemTextColor">#E521F3</item>
+    <style name="ToolbarTitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@color/ToolbarTitleTextColor</item>
     </style>
-
-
+    <style name="ToolbarSubTitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textColor">@color/ToolbarTitleTextColor</item>
+    </style>
 </resources>

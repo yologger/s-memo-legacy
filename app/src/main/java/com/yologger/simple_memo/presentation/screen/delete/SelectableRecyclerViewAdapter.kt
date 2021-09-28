@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.yologger.simple_memo.R
@@ -19,21 +20,26 @@ constructor(
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val textViewTitle: TextView = itemView.findViewById(R.id.item_activity_delete_memo_tv_title)
+        private val imageViewChecked: ImageView = itemView.findViewById(R.id.item_activity_delete_memo_iv_check)
 
         fun bind(selectableMemo: SelectableMemo) {
             if(selectableMemo.isChecked) {
-                itemView.setBackgroundColor(Color.rgb(200, 200, 200))
+                imageViewChecked.visibility = View.VISIBLE
+                // itemView.setBackgroundColor(Color.rgb(200, 200, 200))
             } else {
-                itemView.setBackgroundColor(Color.rgb(255, 255, 255))
+                imageViewChecked.visibility = View.INVISIBLE
+                // itemView.setBackgroundColor(Color.rgb(255, 255, 255))
             }
             textViewTitle.text = selectableMemo.title
 
             itemView.setOnClickListener {
                 selectableMemo.isChecked = !selectableMemo.isChecked
                 if(selectableMemo.isChecked) {
-                    itemView.setBackgroundColor(Color.rgb(200, 200, 200))
+                    // itemView.setBackgroundColor(Color.rgb(200, 200, 200))
+                    imageViewChecked.visibility = View.VISIBLE
                 } else {
-                    itemView.setBackgroundColor(Color.rgb(255, 255, 255))
+                    // itemView.setBackgroundColor(Color.rgb(255, 255, 255))
+                    imageViewChecked.visibility = View.INVISIBLE
                 }
             }
         }

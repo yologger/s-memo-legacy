@@ -4,6 +4,6 @@
 
     <item
         android:id="@+id/menu_activity_create_toolbar_done"
-        android:title="DONE"
+        android:title="@string/activity_create_btn_done"
         app:showAsAction="always" />
 </menu>

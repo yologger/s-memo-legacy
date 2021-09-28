@@ -13,16 +13,27 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
+
 class App: Application() {
 
     override fun onCreate() {
         super.onCreate()
+        setupTheme()
         setupRealm()
         setupKoin()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
+    }
+
+    private fun setupTheme() {
+        val currentTheme = ThemeManager.getCurrentTheme(context = applicationContext)
+        when (currentTheme) {
+            ThemeManager.ThemeMode.DARK -> { ThemeManager.applyTheme(applicationContext, ThemeManager.ThemeMode.DARK) }
+            ThemeManager.ThemeMode.LIGHT -> { ThemeManager.applyTheme(applicationContext, ThemeManager.ThemeMode.LIGHT) }
+            ThemeManager.ThemeMode.DEFAULT -> { ThemeManager.applyTheme(applicationContext, ThemeManager.ThemeMode.DEFAULT) }
+        }
     }
 
     private fun setupKoin() {

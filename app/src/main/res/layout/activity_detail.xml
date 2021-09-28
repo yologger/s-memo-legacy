@@ -18,9 +18,8 @@
             android:id="@+id/activity_detail_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            style="@style/Base_ToolbarStyle"
+            android:minHeight="?attr/actionBarSize" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -34,8 +33,11 @@
                 android:clickable="false"
                 android:cursorVisible="false"
                 android:focusable="false"
+                android:inputType="text"
+                android:maxLines="1"
                 android:focusableInTouchMode="false"
                 android:padding="@dimen/padding_md"
+                android:hint="@string/activity_detail_tv_title"
                 app:layout_constraintBottom_toTopOf="@+id/activity_detail_et_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -52,6 +54,7 @@
                 android:gravity="top"
                 android:inputType="none"
                 android:padding="@dimen/padding_md"
+                android:hint="@string/activity_detail_tv_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

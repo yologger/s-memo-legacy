@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">S 메모</string>
+
+    <!-- activity_app.xml -->
+    <string name="activity_app_btn_home">홈</string>
+    <string name="activity_app_btn_settings">설정</string>
+
+    <!-- fragment_home.xml -->
+    <string name="fragment_home_btn_delete">삭제</string>
+    <string name="fragment_home_btn_reorder">정렬</string>
+    <string name="fragment_home_btn_new_post">글쓰기</string>
+    <string name="fragment_home_message_delete">이 메모를 삭제하시겠어요?</string>
+    <string name="fragment_home_message_delete_success">삭제되었습니다</string>
+    <string name="fragment_home_message_alert_ok">네</string>
+    <string name="fragment_home_message_alert_cancel">아니오</string>
+
+    <!-- fragment_settings.xml -->
+    <string name="fragment_settings_tv_theme">다크 테마</string>
+    <string name="fragment_settings_feature1">새로운 기능이</string>
+    <string name="fragment_settings_feature2">곧 출시됩니다</string>
+
+    <!-- activity_create.xml -->
+    <string name="activity_create_btn_done">완료</string>
+    <string name="activity_create_tv_title">제목</string>
+    <string name="activity_create_tv_content">내용</string>
+    <string name="activity_create_message_create_success">저장되었습니다</string>
+
+    <!-- activity_detail.xml -->
+    <string name="activity_detail_tv_title">제목</string>
+    <string name="activity_detail_tv_content">내용</string>
+    <string name="activity_detail_btn_delete">삭제</string>
+    <string name="activity_detail_message_tap">편집하려면 두 번 탭 해주세요</string>
+    <string name="activity_detail_message_delete">이 메모를 삭제하시겠어요?</string>
+    <string name="activity_detail_message_delete_success">삭제되었습니다</string>
+    <string name="activity_detail_message_alert_ok">네</string>
+    <string name="activity_detail_message_alert_cancel">아니오</string>
+
+    <!-- activity_edit.xml -->
+    <string name="activity_edit_tv_title">제목</string>
+    <string name="activity_edit_tv_content">내용</string>
+    <string name="activity_edit_btn_save">저장</string>
+    <string name="activity_edit_message_update_success">수정되었습니다</string>
+
+    <!-- activity_reorder.xml -->
+    <string name="activity_reorder_btn_save">저장</string>
+
+    <!-- activity_delete.xml -->
+    <string name="activity_delete_btn_delete">삭제</string>
+    <string name="activity_delete_message_delete">선택한 메모들을 삭제하시겠어요?</string>
+    <string name="activity_delete_message_alert_ok">네</string>
+    <string name="activity_delete_message_alert_cancel">아니오</string>
+    <string name="activity_delete_message_delete_success">삭제되었습니다</string>
+
+</resources>

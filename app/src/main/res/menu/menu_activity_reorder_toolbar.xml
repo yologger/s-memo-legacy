@@ -3,6 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_activity_reorder_toolbar_save"
-        android:title="SAVE"
+        android:title="@string/activity_reorder_btn_save"
         app:showAsAction="always" />
 </menu>

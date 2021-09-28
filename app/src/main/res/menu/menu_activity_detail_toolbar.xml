@@ -2,11 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_activity_detail_toolbar_edit"
-        android:title="EDIT"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/menu_activity_detail_toolbar_delete"
-        android:title="DELETE"
+        android:title="@string/activity_detail_btn_delete"
         app:showAsAction="always" />
 </menu>

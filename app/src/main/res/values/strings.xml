@@ -1,13 +1,54 @@
 <resources>
-    <string name="app_name">simple_memo</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">S Memo</string>
+
+    <!-- activity_app.xml -->
+    <string name="activity_app_btn_home">Home</string>
+    <string name="activity_app_btn_settings">Settings</string>
+
+    <!-- fragment_home.xml -->
+    <string name="fragment_home_btn_delete">DELETE</string>
+    <string name="fragment_home_btn_reorder">REORDER</string>
+    <string name="fragment_home_btn_new_post">NEW POST</string>
+    <string name="fragment_home_message_delete">Delete this memo?</string>
+    <string name="fragment_home_message_delete_success">DELETED SUCCESSFULLY</string>
+    <string name="fragment_home_message_alert_ok">OK</string>
+    <string name="fragment_home_message_alert_cancel">CANCEL</string>
+
+    <!-- fragment_settings.xml -->
+    <string name="fragment_settings_tv_theme">Dark Theme</string>
+    <string name="fragment_settings_feature1">New Features</string>
+    <string name="fragment_settings_feature2">Coming Soon</string>
 
     <!-- activity_create.xml -->
+    <string name="activity_create_btn_done">DONE</string>
     <string name="activity_create_tv_title">Title</string>
     <string name="activity_create_tv_content">Content</string>
+    <string name="activity_create_message_create_success">CREATED SUCCESSFULLY</string>
+
+    <!-- activity_detail.xml -->
     <string name="activity_detail_tv_title">Title</string>
     <string name="activity_detail_tv_content">Content</string>
+    <string name="activity_detail_btn_delete">DELETE</string>
+    <string name="activity_detail_message_tap">Double tap for editing</string>
+    <string name="activity_detail_message_delete">Delete this memo?</string>
+    <string name="activity_detail_message_delete_success">DELETED SUCCESSFULLY</string>
+    <string name="activity_detail_message_alert_ok">OK</string>
+    <string name="activity_detail_message_alert_cancel">CANCEL</string>
+
+    <!-- activity_edit.xml -->
     <string name="activity_edit_tv_title">Title</string>
     <string name="activity_edit_tv_content">Content</string>
+    <string name="activity_edit_btn_save">Save</string>
+    <string name="activity_edit_message_update_success">UPDATE SUCCESSFULLY</string>
+
+    <!-- activity_reorder.xml -->
+    <string name="activity_reorder_btn_save">SAVE</string>
+
+    <!-- activity_delete.xml -->
+    <string name="activity_delete_btn_delete">DELETE</string>
+    <string name="activity_delete_message_delete">Delete selected memos?</string>
+    <string name="activity_delete_message_alert_ok">OK</string>
+    <string name="activity_delete_message_alert_cancel">CANCEL</string>
+    <string name="activity_delete_message_delete_success">DELETED SUCCESSFULLY</string>
+
 </resources>

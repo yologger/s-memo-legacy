@@ -9,11 +9,26 @@
 
     <TextView
         android:id="@+id/item_activity_delete_memo_tv_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Title"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_marginRight="@dimen/padding_md"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/item_activity_delete_memo_iv_check"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/item_activity_delete_memo_iv_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tint="@color/itemCheckedColor"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/icon_check_filled_black_24" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

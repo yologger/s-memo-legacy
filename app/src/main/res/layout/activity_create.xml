@@ -19,9 +19,8 @@
             android:id="@+id/activity_create_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            style="@style/Base_ToolbarStyle"
+            android:minHeight="?attr/actionBarSize" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -36,6 +35,7 @@
                 android:inputType="text"
                 android:maxLines="1"
                 android:text="@={viewModel.liveDataTitle}"
+                android:padding="@dimen/padding_md"
                 app:layout_constraintBottom_toTopOf="@+id/activity_create_tv_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +47,7 @@
                 android:layout_height="0dp"
                 android:gravity="top"
                 android:hint="@string/activity_create_tv_content"
+                android:padding="@dimen/padding_md"
                 android:text="@={viewModel.liveDataContent}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

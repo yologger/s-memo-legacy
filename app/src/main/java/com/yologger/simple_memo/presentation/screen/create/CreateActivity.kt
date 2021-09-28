@@ -23,7 +23,7 @@ class CreateActivity : BaseActivity() {
         setupBinding()
         setupToolbar()
         // viewModel.getSize()
-        setTheme(R.style.AppTheme_Dark)
+        // setTheme(R.style.AppTheme_Dark)
         viewModel.getMaxPosition()
     }
 
@@ -34,7 +34,7 @@ class CreateActivity : BaseActivity() {
         viewModel.routingEvent.observe(this, Observer {
             when (it) {
                 CreateVMRoutingEvent.CREATE_SUCCESS -> {
-                    Toast.makeText(this, "CREATED SUCCESSFULLY", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.activity_create_message_create_success), Toast.LENGTH_SHORT).show()
                     finish()
                 }
                 CreateVMRoutingEvent.CLOSE -> { finish() }
