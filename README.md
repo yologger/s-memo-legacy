@@ -19,37 +19,12 @@ You have to set up server-side application to run this. You can download [here](
 
 ## Dependencies
 Heart to Heart for iOS has following dependencies:
-* Carthage(Build Tool)
-* Swift 5.0
-* [Swinject](https://github.com/Swinject/Swinject) for DI
-* [SwinjectAutoregistration](https://github.com/Swinject/SwinjectAutoregistration) for DI
-* [RxSwift](https://github.com/ReactiveX/RxSwift)
-* [Alamofire](https://github.com/Alamofire/Alamofire)
-* [AlamofireImage](https://github.com/Alamofire/AlamofireImage)
-* [Kingfisher](https://github.com/onevcat/Kingfisher)
-* [SnapKit](https://github.com/SnapKit/SnapKit)
-* [ObjectMapper](https://github.com/tristanhimmelman/ObjectMapper)
-* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
-* [TLPhotoPicker](https://github.com/tilltue/TLPhotoPicker)
-* [ImageSlideshow](https://github.com/zvonicek/ImageSlideshow)
-* [XLPagerTabStrip](https://github.com/xmartlabs/XLPagerTabStrip)
-
-
-## Features
-#### `Implemented`
-* Sign up
-* Authorization (OAuth 2.0)
-* Create new post
-    - Choose and upload multiple images
-* Show all posts
-    - Infinite scrolling
-* Upload avatar image
-
-#### `Not Implemented Yet`
-* Dark theme
-* TextField validation
-* Search
-* Follow other users
-* Like post
-* Find password
-* Change password
+* Android Material Component
+* Android Navigation Component
+* Android Architecture Component - ViewModel
+* Room
+* Koin
+* RxKotlin
+* Speed Dial
+* JUnit
+* Espresso
