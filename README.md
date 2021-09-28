@@ -1,4 +1,4 @@
-# Simple Memo for iOS
+# Simple Memo for Android
 
 ## Introduction
 **S Memo** is a simple notepad app. You can also see Heart to Heart for iOS [here](https://github.com/yologger/simple_memo_ios). Heart to heart is based on **MVVM**.
@@ -14,11 +14,8 @@ You can download on Google PlayStore.
 <img src="/imgs/theme.gif" width="200">
 <img src="/imgs/update.gif" width="200">
 
-## Prerequisite
-You have to set up server-side application to run this. You can download [here](https://github.com/yologger/heart_to_heart_server).
-
 ## Dependencies
-Heart to Heart for iOS has following dependencies:
+Heart to Heart for Android has following dependencies:
 * Android Material Component
 * Android Navigation Component
 * Android Architecture Component - ViewModel
