@@ -1,7 +1,7 @@
 # Simple Memo for Android
 
 ## Introduction
-**S Memo** is a simple notepad app. You can also see Heart to Heart for iOS [here](https://github.com/yologger/simple_memo_ios). Heart to heart is based on **MVVM**.
+**S Memo** is a simple notepad app. You can also see Heart to Heart for iOS [here](https://github.com/yologger/simple_memo_ios). S Memo is based on **MVVM**.
 
 ## Download
 You can download on Google PlayStore.
