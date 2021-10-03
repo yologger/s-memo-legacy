@@ -1,7 +1,7 @@
 # Simple Memo for Android
 
 ## Introduction
-**S Memo** is a simple notepad app. You can also see this app for iOS [here](https://github.com/yologger/simple_memo_ios) and this app with Flutter [here](https://github.com/yologger/simple-memo-flutter). S Memo is based on **MVVM**.
+`S Memo` is a simple notepad app. You can also see this app for iOS [here](https://github.com/yologger/simple_memo_ios) and this app with Flutter [here](https://github.com/yologger/simple-memo-flutter). S Memo is based on **MVVM**.
 
 ## Download
 You can download on Google PlayStore.
@@ -15,13 +15,13 @@ You can download on Google PlayStore.
 <img src="/imgs/update.gif" width="300">
 
 ## Dependencies
-S memo for Android has following dependencies:
+`S memo` for Android has following dependencies:
+* [Room](https://developer.android.com/training/data-storage/room?hl=ko) for local database
+* [Koin](https://github.com/InsertKoinIO/koin) for DI
+* [RxKotlin](hhttps://github.com/ReactiveX/RxKotlin)
 * Android Material Component
-* Android Navigation Component
+* [Android Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
 * Android Architecture Component - ViewModel
-* Room
-* Koin
-* RxKotlin
-* Speed Dial
+* [Floating Action Button Speed Dial](https://github.com/leinardi/FloatingActionButtonSpeedDial)
 * JUnit
 * Espresso
