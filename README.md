@@ -9,7 +9,6 @@ You can download on Google PlayStore.
 <a href='https://play.google.com/store/apps/details?id=com.yologger.simple_memo.alpha'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="280"/></a>
 
 ## Screenshots
-<img src="/imgs/1.jpg" width="300">
 <img src="/imgs/create_post.gif" width="300">
 <img src="/imgs/theme.gif" width="300">
 <img src="/imgs/update.gif" width="300">
@@ -21,7 +20,7 @@ You can download on Google PlayStore.
 * [RxKotlin](hhttps://github.com/ReactiveX/RxKotlin)
 * Android Material Component
 * [Android Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
-* Android Architecture Component - ViewModel
+* Android Architecture Component - Data Binding, ViewModel, LiveData
 * [Floating Action Button Speed Dial](https://github.com/leinardi/FloatingActionButtonSpeedDial)
 * JUnit
 * Espresso
