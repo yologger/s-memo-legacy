@@ -34,8 +34,6 @@ constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                         onNext = {
-                            Log.d("TEST", "HomeViewModel: fetchAllMemos()")
-                            Log.d("TEST", it.toString())
                             _memos = it.toMutableList()
                             _memosLiveData.setValue(_memos)
                         },

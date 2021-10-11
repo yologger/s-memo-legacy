@@ -56,11 +56,9 @@ constructor(
                 .subscribeBy(
                         onSuccess = {
                             maxPosition = it
-                            Log.d("TEST", "maxPosition: ${maxPosition}")
                         },
                         onError = {
                             maxPosition = 0
-                            Log.d("TEST", it.localizedMessage)
                         }
                 )
     }

@@ -1,7 +1,7 @@
 # Simple Memo for Android
 
 ## Introduction
-`S Memo` is a simple notepad app. You can also see this app for iOS [here](https://github.com/yologger/simple_memo_ios) and this app with Flutter [here](https://github.com/yologger/simple-memo-flutter). S Memo is based on **MVVM**.
+`S Memo` is a simple notepad app. You can also download this app for iOS [here](https://github.com/yologger/simple_memo_ios) and this app with Flutter [here](https://github.com/yologger/simple-memo-flutter). S Memo is based on **MVVM**.
 
 ## Download
 You can download on Google PlayStore.
@@ -15,12 +15,12 @@ You can download on Google PlayStore.
 
 ## Dependencies
 `S memo` for Android has following dependencies:
-* [Room](https://developer.android.com/training/data-storage/room?hl=ko) for local database
-* [Koin](https://github.com/InsertKoinIO/koin) for DI
-* [RxKotlin](hhttps://github.com/ReactiveX/RxKotlin)
+* Android Architecture Component - Data Binding, ViewModel, LiveData
+* [SingleLiveEvent](https://gist.github.com/JoaquimLey/17c9a6d6aaef404b8ffce6596a11c621)
 * Android Material Component
 * [Android Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
-* Android Architecture Component - Data Binding, ViewModel, LiveData
+* [Koin](https://github.com/InsertKoinIO/koin) for DI
+* [RxKotlin](hhttps://github.com/ReactiveX/RxKotlin)
+* RxAndroid
+* [Room](https://developer.android.com/training/data-storage/room?hl=ko) for local database
 * [Floating Action Button Speed Dial](https://github.com/leinardi/FloatingActionButtonSpeedDial)
-* JUnit
-* Espresso

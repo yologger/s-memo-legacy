@@ -25,20 +25,16 @@ constructor(
         fun bind(selectableMemo: SelectableMemo) {
             if(selectableMemo.isChecked) {
                 imageViewChecked.visibility = View.VISIBLE
-                // itemView.setBackgroundColor(Color.rgb(200, 200, 200))
             } else {
                 imageViewChecked.visibility = View.INVISIBLE
-                // itemView.setBackgroundColor(Color.rgb(255, 255, 255))
             }
             textViewTitle.text = selectableMemo.title
 
             itemView.setOnClickListener {
                 selectableMemo.isChecked = !selectableMemo.isChecked
                 if(selectableMemo.isChecked) {
-                    // itemView.setBackgroundColor(Color.rgb(200, 200, 200))
                     imageViewChecked.visibility = View.VISIBLE
                 } else {
-                    // itemView.setBackgroundColor(Color.rgb(255, 255, 255))
                     imageViewChecked.visibility = View.INVISIBLE
                 }
             }

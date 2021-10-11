@@ -19,7 +19,6 @@ constructor(
 ) : MemoRepository {
 
     override fun createMemo(title: String, content: String, position: Int): Completable {
-        Log.d("TEST", "position: ${position}")
         val memoEntity = MemoEntity(title = title, content = content, position = position)
         return memoDao.insert(memoEntity)
     }

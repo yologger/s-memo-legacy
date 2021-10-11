@@ -56,8 +56,8 @@ android {
     productFlavors {
         alpha {
             dimension "version"
-            versionCode 10
-            versionName "4.0.10"
+            versionCode 11
+            versionName "1.0.0"
             applicationIdSuffix ".alpha"
             versionNameSuffix "-alpha"
         }
@@ -87,13 +87,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-
-    // Junit
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-
-    // Espresso
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // Android Material Component
     implementation "com.google.android.material:material:$material_version"
@@ -127,4 +120,11 @@ dependencies {
 
     // Floating Action Button Speed Dial
     implementation "com.leinardi.android:speed-dial:3.1.1"
+
+    // Junit
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+
+    // Espresso
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

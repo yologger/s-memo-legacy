@@ -100,7 +100,6 @@ class DetailActivity : BaseActivity() {
         toolbar.setOnMenuItemClickListener {
             when(it?.itemId) {
                 R.id.menu_activity_detail_toolbar_delete -> { viewModel.showDeleteDialog() }
-                // R.id.menu_activity_detail_toolbar_edit -> { viewModel.openEdit() }
             }
             true
         }
