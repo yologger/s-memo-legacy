@@ -1,5 +1,8 @@
 # Simple Memo for Android
 
+## Warning
+이 프로젝트를 deprecated 되었습니다. 새로운 프로젝트는 [이 곳](https://github.com/yologger/s-memo-android)에서 확인할 수 있습니다.
+
 ## Introduction
 `S Memo` is a simple notepad app. You can also download this app for iOS [here](https://github.com/yologger/simple_memo_ios) and this app with Flutter [here](https://github.com/yologger/simple-memo-flutter). S Memo is based on **MVVM**.
 
